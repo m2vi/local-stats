@@ -1,4 +1,4 @@
-import printer from '@utils/backend/printer';
+import printer from '@utils/backend/printer/main';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
