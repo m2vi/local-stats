@@ -3,7 +3,7 @@ import Printer from './Printer';
 
 const Home = () => {
   return (
-    <Full className='grid place-items-center'>
+    <Full className='flex flex-col items-center justify-center'>
       <Printer />
     </Full>
   );

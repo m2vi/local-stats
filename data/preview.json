@@ -1,0 +1,35 @@
+{
+  "info": {
+    "IP-Address": "...",
+    "Device Name": "...",
+    "Model Name": "...",
+    "Serial Number": "...",
+    "Firmware Version": "..."
+  },
+  "stats": [
+    {
+      "key": "M",
+      "name": "Magenta",
+      "height": "0",
+      "percentage": 0
+    },
+    {
+      "key": "C",
+      "name": "Cyan",
+      "height": "0",
+      "percentage": 0
+    },
+    {
+      "key": "Y",
+      "name": "Yellow",
+      "height": "0",
+      "percentage": 0
+    },
+    {
+      "key": "BK",
+      "name": "Black",
+      "height": "0",
+      "percentage": 0
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import backup from '@utils/backup';
 import { PrinterInkLevelProps } from '@utils/types';
 import puppeteer, { Puppeteer } from 'puppeteer';
 import printerInfo from './info';
@@ -47,12 +48,14 @@ class Printer {
   }
 
   async stats() {
+    return backup.stats;
     const content = await (await fetch(`${this.url}/general/status.html`)).text();
 
     return printerStats.stats(content);
   }
 
   async info() {
+    return backup.info;
     const { browser, page } = await this.login();
 
     const info = await this.infoG(page);
@@ -63,6 +66,7 @@ class Printer {
   }
 
   async get() {
+    return backup.get;
     const { browser, page } = await this.login();
 
     const stats = await this.statsG(page);
