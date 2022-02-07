@@ -48,7 +48,7 @@ class Printer {
   }
 
   async stats() {
-    return backup.stats;
+    // return backup.stats;
     try {
       const content = await (await fetch(`${this.url}/general/status.html`)).text();
 
@@ -59,7 +59,7 @@ class Printer {
   }
 
   async info() {
-    return backup.info;
+    //  return backup.info;
     try {
       const { browser, page } = await this.login();
 
@@ -74,7 +74,7 @@ class Printer {
   }
 
   async get() {
-    return backup.get;
+    // return backup.get;
     try {
       const { browser, page } = await this.login();
 
