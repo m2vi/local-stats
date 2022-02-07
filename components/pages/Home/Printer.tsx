@@ -16,10 +16,8 @@ const Printer = () => {
     printer
       .fillLevel()
       .then((data) => {
-        if (data?.length > 0) {
-          setFillLevel(data);
-          setFillLevelLast(Date.now());
-        }
+        setFillLevelLast(Date.now());
+        if (data?.length > 0) setFillLevel(data);
       })
       .catch((reason) => console.log(reason));
   };
@@ -28,8 +26,8 @@ const Printer = () => {
     printer
       .info()
       .then((data) => {
-        setInfo(data);
         setInfoLast(Date.now());
+        if (Object.entries(data).length > 0) setInfo(data);
       })
       .catch((reason) => console.log(reason));
   };
