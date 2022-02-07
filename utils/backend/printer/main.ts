@@ -49,32 +49,44 @@ class Printer {
 
   async stats() {
     return backup.stats;
-    const content = await (await fetch(`${this.url}/general/status.html`)).text();
+    try {
+      const content = await (await fetch(`${this.url}/general/status.html`)).text();
 
-    return printerStats.stats(content);
+      return printerStats.stats(content);
+    } catch (error) {
+      return [];
+    }
   }
 
   async info() {
     return backup.info;
-    const { browser, page } = await this.login();
+    try {
+      const { browser, page } = await this.login();
 
-    const info = await this.infoG(page);
+      const info = await this.infoG(page);
 
-    await browser.close();
+      await browser.close();
 
-    return info;
+      return info;
+    } catch (error) {
+      return {};
+    }
   }
 
   async get() {
     return backup.get;
-    const { browser, page } = await this.login();
+    try {
+      const { browser, page } = await this.login();
 
-    const stats = await this.statsG(page);
-    const info = await this.infoG(page);
+      const stats = await this.statsG(page);
+      const info = await this.infoG(page);
 
-    await browser.close();
+      await browser.close();
 
-    return { info, stats };
+      return { info, stats };
+    } catch (error) {
+      return { info: {}, stats: [] };
+    }
   }
 }
 
