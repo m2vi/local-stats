@@ -19,6 +19,10 @@ class PiHole {
   get info() {
     return piholeJson.info;
   }
+
+  get chart() {
+    return piholeJson.chart;
+  }
 }
 
 class Backup {

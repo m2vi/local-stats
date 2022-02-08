@@ -1,5 +1,6 @@
 import backup from '@utils/backup/backup';
 import { basicFetch } from '@utils/fetch';
+import { ChartData } from 'chart.js';
 import QueryString from 'qs';
 import _ from 'underscore';
 import api from '../main';
@@ -86,6 +87,21 @@ class PiHole {
         forwarded,
         unique_domains,
       }, */
+    };
+  }
+
+  async chart(): Promise<ChartData<'doughnut', number[], string>> {
+    const { dns_queries_today, ads_blocked_today } = await this.summary();
+
+    return {
+      labels: ['permitted', 'blocked'],
+      datasets: [
+        {
+          label: 'All queries',
+          data: [dns_queries_today - ads_blocked_today, ads_blocked_today],
+          backgroundColor: ['#44A9FD', '#a22b1c'],
+        },
+      ],
     };
   }
 }

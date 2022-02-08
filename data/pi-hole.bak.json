@@ -5,5 +5,15 @@
     "Clients": "...",
     "Unique clients": "...",
     "Privacy level": "..."
+  },
+  "chart": {
+    "labels": [],
+    "datasets": [
+      {
+        "label": "...",
+        "data": [],
+        "backgroundColor": []
+      }
+    ]
   }
 }
