@@ -1,6 +1,8 @@
+import backup from '@utils/backup/backup';
 import { basicFetch } from '@utils/fetch';
 import QueryString from 'qs';
 import _ from 'underscore';
+import api from '../main';
 
 class PiHole {
   get password() {
@@ -57,6 +59,34 @@ class PiHole {
     const data = await this.afetch('admin/api_db.php', { getDBfilesize: '' });
 
     return data;
+  }
+
+  async info() {
+    if (api.useBackup) return backup.pihole.info;
+    const [summary, versions] = await Promise.all([this.summary(), this.version()]);
+
+    const version = versions?.core_current;
+    const clients = summary?.clients_ever_seen;
+    const unique_clients = summary?.unique_clients;
+
+    const unique_domains = summary?.unique_domains;
+    const cached = summary?.queries_cached;
+    const blocked = summary?.domains_being_blocked;
+    const forwarded = summary?.queries_forwarded;
+
+    return {
+      'IP-Address': this.ip,
+      Version: version,
+      Clients: clients,
+      'Unique clients': unique_clients,
+      'Privacy level': summary?.privacy_level,
+      /*       stats: {
+        blocked,
+        cached,
+        forwarded,
+        unique_domains,
+      }, */
+    };
   }
 }
 

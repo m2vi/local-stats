@@ -5,42 +5,23 @@ import { useEffect } from 'react';
 import { Line } from 'rc-progress';
 import moment from 'moment';
 import Full from '@components/Full';
+import backup from '@utils/backup/backup';
 
 const Printer = () => {
-  const [fillLevel, setFillLevel] = useState<PrinterInkLevelProps[]>([]);
+  const [fillLevel, setFillLevel] = useState<PrinterInkLevelProps[]>(backup.printer.stats);
   const [fillLevelLast, setFillLevelLast] = useState(0);
-  const [info, setInfo] = useState<any>({});
+  const [info, setInfo] = useState<any>(backup.printer.info);
   const [infoLast, setInfoLast] = useState(0);
 
-  const fetchFillLevel = async () => {
-    printer
-      .fillLevel()
-      .then((data) => {
-        setFillLevelLast(Date.now());
-        if (data?.length > 0) setFillLevel(data);
-      })
-      .catch((reason) => console.log(reason));
-  };
-
-  const fetchInfo = async () => {
-    printer
-      .info()
-      .then((data) => {
-        setInfoLast(Date.now());
-        if (Object.entries(data).length > 0) setInfo(data);
-      })
-      .catch((reason) => console.log(reason));
-  };
-
   useEffect(() => {
-    fetchInfo();
-    const interval = setInterval(() => fetchInfo(), 1000 * 60);
+    printer.fetchInfo(setInfo, setInfoLast);
+    const interval = setInterval(() => printer.fetchInfo(setInfo, setInfoLast), 1000 * 60);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    fetchFillLevel();
-    const interval = setInterval(() => fetchFillLevel(), 1000 * 5);
+    printer.fetchFillLevel(setFillLevel, setFillLevelLast);
+    const interval = setInterval(() => printer.fetchFillLevel(setFillLevel, setFillLevelLast), 1000 * 5);
     return () => clearInterval(interval);
   }, []);
 

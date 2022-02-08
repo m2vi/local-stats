@@ -1,4 +1,6 @@
 import { basicFetch } from '@utils/fetch';
+import { PrinterInkLevelProps } from '@utils/types';
+import { SetStateAction } from 'react';
 
 class Printer {
   async stats() {
@@ -38,6 +40,23 @@ class Printer {
       console.log(error);
       return {};
     }
+  }
+
+  async fetchFillLevel(
+    setState: (value: SetStateAction<Array<PrinterInkLevelProps>>) => void,
+    setStateLast: (value: SetStateAction<number>) => void
+  ) {
+    setStateLast(Date.now());
+    const fillLevel = await this.fillLevel();
+
+    if (fillLevel?.length > 0) setState(fillLevel);
+  }
+
+  async fetchInfo(setState: (value: SetStateAction<any>) => void, setStateLast: (value: SetStateAction<number>) => void) {
+    setStateLast(Date.now());
+    const info = await this.info();
+
+    if (Object.entries(info).length > 0) setState(info);
   }
 }
 

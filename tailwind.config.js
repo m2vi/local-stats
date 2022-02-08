@@ -44,7 +44,7 @@ module.exports = {
       170: '170px',
       200: '200px',
       250: '250px',
-      300: '350px',
+      300: '300px',
       400: '400px',
       'toggle-h': 'var(--toggle-height)',
       'toggle-h-2': 'calc(var(--toggle-height) - var(--toggle-border) * 2)',
