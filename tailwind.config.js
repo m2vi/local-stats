@@ -56,11 +56,6 @@ module.exports = {
       0: '0px',
       2: '2px',
     },
-    boxShadow: {
-      accent: 'var(--shadow-accent)',
-      1: '0px 4px 14px rgba(0, 0, 0, 0.4)',
-      toggle: 'inset 0px 0px 0px 2px var(--color-primary-700)',
-    },
     extend: {
       colors: {
         button: 'var(--color-button-text)',
