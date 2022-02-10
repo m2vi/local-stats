@@ -7,6 +7,13 @@ class Scoresaber {
     console.log(widgets);
     setState(widgets);
   }
+
+  async fetchCoingecko(setState: (value: SetStateAction<any>) => void) {
+    const data = await basicFetch('/api/coingecko/widgets');
+    console.log(data);
+    if (data?.error) return;
+    setState(data);
+  }
 }
 
 export const scoresaber = new Scoresaber();

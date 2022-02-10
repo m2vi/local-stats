@@ -8,10 +8,10 @@ const _app = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>Local Stats</title>
       </Head>
-      <Full className='h-screen w-screen flex items-center justify-center'>
-        <Full className='px-120 h-screen w-full max-w-screen-2xl'>
+      <Full className='h-screen w-screen overflow-y-auto '>
+        <div className='px-120 h-full w-full max-w-screen-2xl my-6'>
           <Component {...pageProps} />
-        </Full>
+        </div>
       </Full>
     </>
   );

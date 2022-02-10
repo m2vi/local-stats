@@ -1,10 +1,6 @@
 import { basicFetch } from '@utils/fetch';
 
-class Scoresaber {
-  get id() {
-    return process.env.SCORESABER_ID!;
-  }
-
+class Filmlist {
   private async fetch() {
     return await basicFetch(`https://filmlist.m2vi.me/api/stats/widget`);
   }
@@ -30,5 +26,5 @@ class Scoresaber {
   }
 }
 
-export const scoresaber = new Scoresaber();
-export default scoresaber;
+export const filmlist = new Filmlist();
+export default filmlist;

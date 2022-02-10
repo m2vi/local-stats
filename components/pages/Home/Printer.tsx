@@ -26,8 +26,8 @@ const Printer = () => {
   }, []);
 
   return (
-    <div className='flex justify-between  max-w-screen-lg w-full h-full max-h-250 mb-6'>
-      <div className='w-full rounded-15 bg-primary-800 flex flex-col p-6 shadow-1 mr-6 h-full relative'>
+    <div className='flex justify-between  max-w-screen-lg w-full h-250 mb-6'>
+      <div className='w-full rounded-15 bg-primary-800 flex flex-col p-6 shadow-1 mr-6 h-250 relative'>
         <span className='text-xl font-semibold'>Printer fill level:</span>
 
         <table className='my-3'>
@@ -60,7 +60,7 @@ const Printer = () => {
         </table>
         <span className='text-primary-300 text-sm absolute bottom-6'>Last fetch {moment(fillLevelLast).format('HH:mm:ss')}</span>
       </div>
-      <div className='w-full rounded-15 bg-primary-800 flex flex-col p-6 shadow-1 max-w-sm h-full relative'>
+      <div className='w-full rounded-15 bg-primary-800 flex flex-col p-6 shadow-1 max-w-sm h-250 relative'>
         <span className='text-xl font-semibold'>Printer info:</span>
         <table className='my-3'>
           <tbody>

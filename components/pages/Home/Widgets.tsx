@@ -8,14 +8,14 @@ const Widgets = () => {
 
   useEffect(() => {
     widget.fetch(setWidgets);
-    const interval = setInterval(() => widget.fetch(setWidgets), 1000 * 3);
+    const interval = setInterval(() => widget.fetch(setWidgets), 1000 * 5);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className='grid grid-cols-4 gap-4 max-w-screen-lg w-full mb-6'>
       {widgets.map((v, i) => {
-        const isNegative = Math.sign(v?.data?.diff) === -1;
+        const isNegative = Math.sign(parseFloat(v?.data?.diff)) === -1;
 
         const Icon = (Icons as any)?.[v?.data?.icon] ? (Icons as any)?.[v?.data?.icon] : Icons['MinusSmIcon'];
 

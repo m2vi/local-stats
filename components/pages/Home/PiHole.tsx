@@ -27,13 +27,13 @@ const PiHole = () => {
   }, []);
 
   return (
-    <div className='flex justify-between  max-w-screen-lg w-full h-full max-h-300 mb-6'>
-      <div className='w-full rounded-15 bg-primary-800 flex flex-col p-6 shadow-1 mr-6 h-full relative'>
+    <div className='flex justify-between  max-w-screen-lg w-full h-300 mb-6'>
+      <div className='w-full rounded-15 bg-primary-800 flex flex-col p-6 shadow-1 mr-6  h-300 relative'>
         <span className='text-xl font-semibold'>Pi-hole stats:</span>
 
         <span className='text-primary-300 text-sm absolute bottom-6'>Last fetch {moment(chartLast).format('HH:mm:ss')}</span>
       </div>
-      <div className='w-full rounded-15 bg-primary-800 flex flex-col p-6 shadow-1 max-w-sm h-full relative'>
+      <div className='w-full rounded-15 bg-primary-800 flex flex-col p-6 shadow-1 max-w-sm h-300 relative'>
         <span className='text-xl font-semibold'>Pi-hole info:</span>
 
         <table className='my-3'>

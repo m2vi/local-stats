@@ -2,6 +2,9 @@
 const withPWA = require('next-pwa');
 
 const nextConfig = {
+  images: {
+    domains: ['assets.coingecko.com'],
+  },
   pwa: {
     dest: 'public',
     register: true,
