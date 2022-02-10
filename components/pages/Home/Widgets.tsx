@@ -1,9 +1,10 @@
 import * as Icons from '@heroicons/react/outline';
+import backup from '@utils/backup/backup';
 import widget from '@utils/frontend/widget';
 import { useEffect, useState } from 'react';
 
 const Widgets = () => {
-  const [widgets, setWidgets] = useState<any[]>([]);
+  const [widgets, setWidgets] = useState<any[]>(Array.from({ length: 4 }).map(() => backup.widgets.get));
 
   useEffect(() => {
     widget.fetch(setWidgets);
