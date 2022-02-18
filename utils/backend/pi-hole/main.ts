@@ -1,6 +1,7 @@
 import backup from '@utils/backup/backup';
 import { basicFetch } from '@utils/fetch';
 import { ChartData } from 'chart.js';
+import cheerio from 'cheerio';
 import QueryString from 'qs';
 import _ from 'underscore';
 import api from '../main';
@@ -60,6 +61,30 @@ class PiHole {
     const data = await this.afetch('admin/api_db.php', { getDBfilesize: '' });
 
     return data;
+  }
+
+  async raspStatus() {
+    const data = await (await fetch(`${this.baseUrl}/admin/groups-domains.php`)).text();
+
+    const $ = cheerio.load(data);
+
+    const rawInfo = $('div.pull-left.info span:not([hidden]):not(#tempdisplay)')
+      .map(function (this, i) {
+        if (i >= 2) {
+          return $(this)
+            .text()
+            .split(':')
+            .map((s) => s.trim());
+        }
+      })
+      .get();
+
+    const info = {
+      [rawInfo[0]]: rawInfo[1],
+      [rawInfo[2]]: `${parseFloat(rawInfo[3]).toFixed(1)}°C`,
+    };
+
+    return info;
   }
 
   async info() {

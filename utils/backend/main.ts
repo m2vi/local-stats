@@ -8,7 +8,7 @@ class Api {
     return !(ip.isPrivate(addr) && addr.startsWith(process.env.ROUTER_IP!));
   }
 
-  async ping(ip: string) {
+  async ping(ip: string): Promise<ping.PingResponse> {
     return await ping.promise.probe(ip);
   }
 }

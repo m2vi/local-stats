@@ -102,6 +102,7 @@ module.exports = {
   variants: {
     backgroundColor: ({ after }) => after(['disabled']),
     textColor: ({ after }) => after(['disabled']),
+    margin: ['responsive', 'hover', 'first', 'last'],
     extend: {
       borderWidth: ['last'],
       margin: ['first', 'last'],
