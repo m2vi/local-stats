@@ -10,7 +10,7 @@
   "dependencies": {
     "@headlessui/react": "^1.4.3",
     "@heroicons/react": "^1.0.5",
-    "chart.js": "^3.7.0",
+    "chart.js": "^3.8.0",
     "cheerio": "^1.0.0-rc.10",
     "coingecko-api": "^1.0.10",
     "ip": "^1.1.5",
